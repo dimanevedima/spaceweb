@@ -1,25 +1,70 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 
-function App() {
+import {Footer, Header, Sidebar, Body} from './Layout';
+import {Domens, Journal, User, Vps, Main} from './pages';
+
+import style from './style.module.scss';
+
+const routes = [
+  {
+    path: "/journal",
+    exact: true,
+    component: Journal,
+  },
+  {
+    path: "/domens",
+    exact: true,
+    component: Domens,
+  },
+  {
+    path: "/vps",
+    exact: true,
+    component: Vps,
+  },
+  {
+    path: "/user",
+    exact: true,
+    component: User,
+  },
+  {
+    path: "/",
+    exact: true,
+    component: Main,
+  },
+];
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Router>
+      <div className = {style.wrapper}>
+
+        <Sidebar className = {style.sidebar}/>
+
+        <Header className={style.header}/>
+
+        <Body className={style.body}>
+            <Switch>
+              {routes.map((route, index) => (
+                <Route
+                  key={index}
+                  path={route.path}
+                  component={route.component}
+                  />
+              ))}
+            </Switch>
+        </Body>
+
+        <Footer className={style.footer}/>
+
     </div>
+
+    </Router>
   );
-}
+};
 
 export default App;

@@ -1,0 +1,50 @@
+.article__header{
+
+  p{
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
+  }
+
+  display:flex;
+  justify-content:space-between;
+}
+
+.articles__item{
+
+  border-bottom: 2px solid #F0F5F7;
+  cursor: pointer;
+    padding: 0 20px;
+  img{
+    transition: all 0.5s linear;
+  }
+}
+
+.active{
+    background: #F3FCFF;
+    .article__header{
+      img{
+        transform: rotate(180deg);
+        transition: all 0.5s linear;
+      }
+    }
+    .article__body{
+      display: block;
+      max-height: 300px;
+      overflow-x: scroll;
+    }
+}
+
+.article__body{
+  display: none;
+  padding-right: 300px;
+  padding-bottom: 27px;
+  img{
+    max-height: 600px;
+    max-width: 600px;
+  }
+}
+
+.loading{
+  margin: 0 40%;
+}
